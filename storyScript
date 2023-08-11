@@ -6,63 +6,29 @@ using TMPro;
 
 public class StoryScript : MonoBehaviour
 {
-
     [SerializeField]
     // Text
     private TextAsset story;
     private string storyText;
     private string[] storySentences;
     
-    // Start is called before the first frame update
     void Start()
     {
         // Text 
-        storySplit();
-        
-        
+        storySplit();       
         //storyLoader()
         StartCoroutine(storyLoader());
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-
     }
 
     private IEnumerator storyLoader() {
-
-
         for (int i = 0; i < storySentences.Length; i++){
-
-
-           
-            // Text
             this.gameObject.GetComponent<TextMeshProUGUI>().text = storySentences[i];
-
-          
-
-
             yield return new WaitForSeconds(5f);
-
-         
-
         }
-
-
     }
 
     void storySplit() {
-
         storyText = story.text;
-
         storySentences = storyText.Split(char.Parse("\n"));
-
-
     }
-
-
 }
